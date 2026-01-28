@@ -3,251 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>רשימת מנויים - צ'מפיון מוטורס | ממשק ניהול</title>
+    <title>ניהול מנויי מיגון - צ'מפיון מוטורס</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Assistant', sans-serif;
-            background-color: #f0f4f8;
-            overflow-x: hidden;
-        }
-
-        /* אנימציית רקע משוכללת */
-        .animated-bg {
-            background: linear-gradient(-45deg, #e2e8f0, #cbd5e1, #f1f5f9, #ffffff);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-        }
-
-        /* דוגמת רשת עדינה ברקע */
-        .grid-pattern {
-            background-image: radial-gradient(#94a3b8 1px, transparent 1px);
-            background-size: 30px 30px;
-            opacity: 0.3;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* אפקט זכוכית */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        /* אנימציית כניסה */
-        .fade-in-up {
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* עיצוב גלילה */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        /* שורות טבלה */
-        .table-row-hover:hover td {
             background-color: #f8fafc;
-            transform: scale(1.005); 
-            transition: all 0.2s ease;
-            cursor: default;
+            color: #1e293b;
         }
-        .table-row-hover td {
-             transition: all 0.2s ease;
+        .table-container {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        tr:hover {
+            background-color: #e2e8f0;
+            transition: background-color 0.15s ease;
         }
     </style>
 </head>
-<body class="min-h-screen text-slate-800">
+<body class="p-4 md:p-10">
 
-    <!-- אלמנטים של רקע -->
-    <div class="animated-bg"></div>
-    <div class="grid-pattern"></div>
-
-    <div class="max-w-6xl mx-auto p-4 md:p-8 fade-in-up">
-        
-        <!-- Header Section -->
-        <header class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-            <div class="text-center md:text-right">
-                <h1 class="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-blue-600 mb-1">
-                    צ'מפיון מוטורס
-                </h1>
-                <p class="text-slate-500 font-medium tracking-wide">צ'מפיון מוטורס | מאגר כתובות ארצי</p>
-            </div>
-            <div class="hidden md:block">
-                <!-- לוגו או אלמנט גרפי סימבולי -->
-                <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    </svg>
-                </div>
-            </div>
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="mb-8 border-b-2 border-slate-200 pb-6 text-right">
+            <h1 class="text-4xl font-extrabold text-slate-800 mb-2">מערכת מנויי מיגון</h1>
+            <p class="text-slate-500 text-lg">סנכרון מלא בין אתרי שו"ב לפרטי מנויי מיגון</p>
         </header>
 
-        <!-- הודעה נעוצה (Pinned Message) -->
-        <div class="mb-8 relative group">
-            <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl opacity-30 blur group-hover:opacity-50 transition duration-500"></div>
-            <div class="relative glass-panel rounded-xl p-6 shadow-sm">
-                
-                <div class="space-y-4">
-                    <!-- הודעה 1 -->
-                    <div class="bg-white/50 rounded-lg p-4 border-r-4 border-red-500 shadow-sm hover:bg-white/80 transition-colors">
-                        <p class="text-slate-800 text-base font-medium leading-relaxed">
-                            <span class="text-red-600 font-bold ml-1">•</span>
-                            בכל התראה יש לשלוח סייר מיגון לאתר הרלוונטי.
-                        </p>
-                    </div>
-
-                    <!-- הודעה 2 -->
-                    <div class="bg-white/50 rounded-lg p-4 border-r-4 border-blue-500 shadow-sm hover:bg-white/80 transition-colors">
-                        <div class="text-slate-800 text-base font-medium leading-relaxed space-y-2">
-                            <p>
-                                <span class="text-blue-600 font-bold ml-1">•</span>
-                                פתיחת דלת המטבח ונטרול מערכת האזעקה – רק באישור רוני ברזני (054-558-0327) או דן בנקין (054-557-4107)
-                            </p>
-                            <div class="pr-5 text-sm text-slate-600 space-y-1">
-                                <p class="flex items-center gap-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-                                    עם הגעת הגורם לדלת: <strong>Cancel Force Close + נטרול אזעקה.</strong>
-                                </p>
-                                <p class="flex items-center gap-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-                                    לאחר עזיבה ואימות מצלמות: <strong>דריכת מערכת והחזרת הדלת ל-Force Close.</strong>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Search Bar -->
-        <div class="mb-6 relative max-w-lg">
-            <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-            </div>
-            <input type="text" id="searchInput" placeholder="חפש לפי שם, מנוי או כתובת..." 
-                   class="w-full pr-12 pl-4 py-3.5 rounded-xl border-0 ring-1 ring-slate-200 shadow-lg shadow-slate-200/50 text-slate-700 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur"
-                   onkeyup="filterTable()">
-        </div>
-
-        <!-- Table Container -->
-        <div class="glass-panel rounded-2xl shadow-xl overflow-hidden border border-slate-100">
-            <div class="overflow-x-auto max-h-[600px]">
-                <table class="w-full text-right border-collapse" id="subTable">
-                    <thead class="bg-slate-800 text-white sticky top-0 z-10 shadow-md">
-                        <tr>
-                            <th class="p-5 font-bold text-sm uppercase tracking-wider border-b border-slate-700/50 w-32">
-                                <div class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" /></svg>
-                                    מס' מנוי
-                                </div>
-                            </th>
-                            <th class="p-5 font-bold text-sm uppercase tracking-wider border-b border-slate-700/50">
-                                <div class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-                                    שם מנוי
-                                </div>
-                            </th>
-                            <th class="p-5 font-bold text-sm uppercase tracking-wider border-b border-slate-700/50">
-                                <div class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                                    כתובת
-                                </div>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 bg-white/50">
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">005768</td><td class="p-5 font-medium">ראם - משרדים</td><td class="p-5 text-slate-500 group-hover:text-slate-700">בני עי"ש</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">036374</td><td class="p-5 font-medium">פולסוואגן בני ברק</td><td class="p-5 text-slate-500 group-hover:text-slate-700">ששת הימים 30 בני ברק</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">036478</td><td class="p-5 font-medium">אאודי בני ברק</td><td class="p-5 text-slate-500 group-hover:text-slate-700">ששת הימים 30 בני ברק</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">036737</td><td class="p-5 font-medium">פולסוואגן ירושלים</td><td class="p-5 text-slate-500 group-hover:text-slate-700">התנופה 7 ירושלים</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">036851</td><td class="p-5 font-medium">אאודי+מ.מסחריות ירושלים</td><td class="p-5 text-slate-500 group-hover:text-slate-700">הסדנא 1 ירושלים</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">042889</td><td class="p-5 font-medium">סיאט חיפה</td><td class="p-5 text-slate-500 group-hover:text-slate-700">דרך יפו 157 חיפה</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">042927</td><td class="p-5 font-medium">שורק - היקפית 3</td><td class="p-5 text-slate-500 group-hover:text-slate-700">המדע 1 ראשון לציון</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">042929</td><td class="p-5 font-medium">שורק - היקפית 4</td><td class="p-5 text-slate-500 group-hover:text-slate-700">המדע 1 ראשון לציון</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">042993</td><td class="p-5 font-medium">שורק - סקודה</td><td class="p-5 text-slate-500 group-hover:text-slate-700">המדע 1 ראשון לציון</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">043024</td><td class="p-5 font-medium">שורק - קבלה סקודה</td><td class="p-5 text-slate-500 group-hover:text-slate-700">המדע 1 ראשון לציון</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">043367</td><td class="p-5 font-medium">אאודי פתח תקווה</td><td class="p-5 text-slate-500 group-hover:text-slate-700">התנופה 5 פתח תקווה</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">043414</td><td class="p-5 font-medium">שורק - היקפית 1</td><td class="p-5 text-slate-500 group-hover:text-slate-700">המדע 1 ראשון לציון</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">045025</td><td class="p-5 font-medium">פולסוואגן חיפה - אולמות</td><td class="p-5 text-slate-500 group-hover:text-slate-700">דרך יפו 157 חיפה</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">049038</td><td class="p-5 font-medium">אאודי חיפה</td><td class="p-5 text-slate-500 group-hover:text-slate-700">דרך יפו 157 חיפה</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">052667</td><td class="p-5 font-medium">אלייד - תשתיות</td><td class="p-5 text-slate-500 group-hover:text-slate-700">ששת הימים 30 בני ברק</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">052834</td><td class="p-5 font-medium">סיאט ירושלים</td><td class="p-5 text-slate-500 group-hover:text-slate-700">האומן 14 ירושלים</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">700012</td><td class="p-5 font-medium">סקודה באר שבע</td><td class="p-5 text-slate-500 group-hover:text-slate-700">חיטה 1 באר שבע</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">700014</td><td class="p-5 font-medium">פולסוואגן באר שבע</td><td class="p-5 text-slate-500 group-hover:text-slate-700">חיטה 1 באר שבע</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">700015</td><td class="p-5 font-medium">אאודי באר שבע מדור 2</td><td class="p-5 text-slate-500 group-hover:text-slate-700">חיטה 1 באר שבע</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">700016</td><td class="p-5 font-medium">סיאט באר שבע מדור 3</td><td class="p-5 text-slate-500 group-hover:text-slate-700">חיטה 1 באר שבע</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">700416</td><td class="p-5 font-medium">אולמות באר שבע - מטבחון והקפי</td><td class="p-5 text-slate-500 group-hover:text-slate-700">חיטה 1 באר שבע</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">757963</td><td class="p-5 font-medium">צ'מפיון מוטורס - מטה</td><td class="p-5 text-slate-500 group-hover:text-slate-700">פלמחים</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">758577</td><td class="p-5 font-medium">אולם תצוגה סקודה ירושלים</td><td class="p-5 text-slate-500 group-hover:text-slate-700">האומן 14 ירושלים</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">758646</td><td class="p-5 font-medium">קופרה הרצליה</td><td class="p-5 text-slate-500 group-hover:text-slate-700">שנקר 15 הרצליה</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">759610</td><td class="p-5 font-medium">צ'מפיון מוטורס - מטה</td><td class="p-5 text-slate-500 group-hover:text-slate-700">פלמחים</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">776989</td><td class="p-5 font-medium">מסירות צ'מפיון</td><td class="p-5 text-slate-500 group-hover:text-slate-700">דרך הנצחון 1 בני עי"ש</td></tr>
-                        <tr class="table-row-hover group"><td class="p-5 text-sm font-bold text-slate-700 font-mono">778593</td><td class="p-5 font-medium">סקודה נתניה</td><td class="p-5 text-slate-500 group-hover:text-slate-700">הגביש 4 נתניה</td></tr>
-                        <tr class="table-row-hover group bg-slate-50/50"><td class="p-5 text-sm font-bold text-slate-700 font-mono">779335</td><td class="p-5 font-medium">צ'מפיון מוטורס - מגרש מכוניות1</td><td class="p-5 text-slate-500 group-hover:text-slate-700">העבודה 4 נס ציונה</td></tr>
-                    </tbody>
-                </table>
-                
-                <!-- Empty State Message (Hidden by default) -->
-                <div id="noResults" class="hidden p-10 text-center text-slate-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <!-- Search -->
+        <div class="mb-6 flex justify-start">
+            <div class="relative w-full md:w-1/3">
+                <input type="text" id="searchInput" placeholder="חיפוש חופשי (מנוי, שם, כתובת)..." 
+                       class="w-full p-4 pr-12 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all shadow-sm"
+                       onkeyup="filterTable()">
+                <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-slate-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
-                    <p>לא נמצאו תוצאות התואמות את החיפוש שלך</p>
                 </div>
             </div>
         </div>
 
-        <footer class="mt-8 text-center">
-            <p class="text-slate-500 text-sm font-medium">
-                &copy; 2024 דוח מנויים קוויים | <span class="text-blue-600 font-bold">צ'מפיון מוטורס</span>
-            </p>
-            <p class="text-xs text-slate-400 mt-1">המערכת מאובטחת ולשימוש פנימי בלבד</p>
+        <!-- Table -->
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 table-container bg-white">
+            <table class="w-full text-right border-collapse" id="subTable">
+                <thead class="bg-slate-800 text-white">
+                    <tr>
+                        <th class="p-5 font-bold text-sm tracking-wide">שם האתר בשו"ב</th>
+                        <th class="p-5 font-bold text-sm tracking-wide">מס' מנוי מיגון</th>
+                        <th class="p-5 font-bold text-sm tracking-wide">שם מנוי מיגון</th>
+                        <th class="p-5 font-bold text-sm tracking-wide">כתובת</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200">
+                    <!-- Data Rows - Verified sync between Subscription Number and Subscription Name -->
+                    <tr><td class="p-5 font-bold text-blue-900">ראם משרדים</td><td class="p-5">005768</td><td class="p-5">ראם - משרדים</td><td class="p-5 text-slate-600">בני עי"ש</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">פולקסווגן בני ברק</td><td class="p-5">036374</td><td class="p-5">פולסוואגן בני ברק</td><td class="p-5 text-slate-600">ששת הימים 30 בני ברק</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי בני ברק</td><td class="p-5">036478</td><td class="p-5">אאודי בני ברק</td><td class="p-5 text-slate-600">ששת הימים 30 בני ברק</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם פולקסווגן ירושלים</td><td class="p-5">036737</td><td class="p-5">פולסוואגן ירושלים</td><td class="p-5 text-slate-600">התנופה 7 ירושלים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי+מ.מסחריות ירושלים</td><td class="p-5">036851</td><td class="p-5">אאודי+מ.מסחריות ירושלים</td><td class="p-5 text-slate-600">הסדנא 1 ירושלים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">סיאט חיפה</td><td class="p-5">042889</td><td class="p-5">סיאט חיפה</td><td class="p-5 text-slate-600">דרך יפו 157 חיפה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">042927</td><td class="p-5">שורק - היקפית 3</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">042929</td><td class="p-5">שורק - היקפית 4</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">042993</td><td class="p-5">שורק - סקודה</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">043024</td><td class="p-5">שורק - קבלה סקודה</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי פתח תקווה</td><td class="p-5">043367</td><td class="p-5">אאודי פתח תקווה</td><td class="p-5 text-slate-600">התנופה 5 פתח תקווה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">043414</td><td class="p-5">שורק - היקפית 1</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">פולסוואגן חיפה - אולמות</td><td class="p-5">045025</td><td class="p-5">פולסוואגן חיפה - אולמות</td><td class="p-5 text-slate-600">דרך יפו 157 חיפה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי חיפה</td><td class="p-5">049038</td><td class="p-5">אאודי חיפה</td><td class="p-5 text-slate-600">דרך יפו 157 חיפה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">משרדי אלייד</td><td class="p-5">052667</td><td class="p-5">אלייד - תשתיות</td><td class="p-5 text-slate-600">ששת הימים 30 בני ברק</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם סיאט ירושלים</td><td class="p-5">052834</td><td class="p-5">סיאט ירושלים</td><td class="p-5 text-slate-600">האומן 14 ירושלים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">סקודה באר שבע</td><td class="p-5">700012</td><td class="p-5">סקודה באר שבע</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">פולסוואגן באר שבע</td><td class="p-5">700014</td><td class="p-5">פולסוואגן באר שבע</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי באר שבע</td><td class="p-5">700015</td><td class="p-5">אאודי באר שבע מדור 2</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">סיאט באר שבע</td><td class="p-5">700016</td><td class="p-5">סיאט באר שבע מדור 3</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">חניון ומסירות באר שבע</td><td class="p-5">700416</td><td class="p-5">אולמות באר שבע - מטבחון והקפי</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">בית צ'מפיון</td><td class="p-5">757963</td><td class="p-5">צ'מפיון מוטורס - מטה</td><td class="p-5 text-slate-600">פלמחים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם תצוגה סקודה ירושלים</td><td class="p-5">758577</td><td class="p-5">אולם תצוגה סקודה ירושלים</td><td class="p-5 text-slate-600">האומן 14 ירושלים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם קופרה הרצליה</td><td class="p-5">758646</td><td class="p-5">קופרה הרצליה</td><td class="p-5 text-slate-600">שנקר 15 הרצליה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">בית צ'מפיון</td><td class="p-5">759610</td><td class="p-5">צ'מפיון מוטורס - מטה</td><td class="p-5 text-slate-600">פלמחים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם סקודה נתניה</td><td class="p-5">778593</td><td class="p-5">סקודה נתניה</td><td class="p-5 text-slate-600">הגביש 4 נתניה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">צ'מפיון מוטורס - מגרש מכוניות1</td><td class="p-5">779335</td><td class="p-5">צ'מפיון מוטורס - מגרש מכוניות1</td><td class="p-5 text-slate-600">העבודה 4 נס ציונה</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="mt-10 text-center text-slate-400 text-sm">
+            &copy; 2026 צ'מפיון מוטורס | מערכת מנויי מיגון פנימית
         </footer>
     </div>
 
@@ -257,24 +104,250 @@
             const filter = input.value.toLowerCase();
             const table = document.getElementById("subTable");
             const tr = table.getElementsByTagName("tr");
-            const noResults = document.getElementById("noResults");
-            let hasResults = false;
 
             for (let i = 1; i < tr.length; i++) {
                 let rowText = tr[i].innerText.toLowerCase();
                 if (rowText.includes(filter)) {
                     tr[i].style.display = "";
-                    hasResults = true;
                 } else {
                     tr[i].style.display = "none";
                 }
             }
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניהול מנויי מיגון - צ'מפיון מוטורס</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Assistant', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .table-container {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        tr:hover {
+            background-color: #e2e8f0;
+            transition: background-color 0.15s ease;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
 
-            // הצגת הודעה אם אין תוצאות
-            if (!hasResults && filter !== "") {
-                noResults.classList.remove('hidden');
-            } else {
-                noResults.classList.add('hidden');
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="mb-8 border-b-2 border-slate-200 pb-6 text-right">
+            <h1 class="text-4xl font-extrabold text-slate-800 mb-2">מערכת מנויי מיגון</h1>
+            <p class="text-slate-500 text-lg">סנכרון מלא בין אתרי שו"ב לפרטי מנויי מיגון</p>
+        </header>
+
+        <!-- Search -->
+        <div class="mb-6 flex justify-start">
+            <div class="relative w-full md:w-1/3">
+                <input type="text" id="searchInput" placeholder="חיפוש חופשי (מנוי, שם, כתובת)..." 
+                       class="w-full p-4 pr-12 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all shadow-sm"
+                       onkeyup="filterTable()">
+                <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-slate-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 table-container bg-white">
+            <table class="w-full text-right border-collapse" id="subTable">
+                <thead class="bg-slate-800 text-white">
+                    <tr>
+                        <th class="p-5 font-bold text-sm tracking-wide">שם האתר בשו"ב</th>
+                        <th class="p-5 font-bold text-sm tracking-wide">מס' מנוי מיגון</th>
+                        <th class="p-5 font-bold text-sm tracking-wide">שם מנוי מיגון</th>
+                        <th class="p-5 font-bold text-sm tracking-wide">כתובת</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200">
+                    <!-- Data Rows - Verified sync between Subscription Number and Subscription Name -->
+                    <tr><td class="p-5 font-bold text-blue-900">ראם משרדים</td><td class="p-5">005768</td><td class="p-5">ראם - משרדים</td><td class="p-5 text-slate-600">בני עי"ש</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">פולקסווגן בני ברק</td><td class="p-5">036374</td><td class="p-5">פולסוואגן בני ברק</td><td class="p-5 text-slate-600">ששת הימים 30 בני ברק</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי בני ברק</td><td class="p-5">036478</td><td class="p-5">אאודי בני ברק</td><td class="p-5 text-slate-600">ששת הימים 30 בני ברק</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם פולקסווגן ירושלים</td><td class="p-5">036737</td><td class="p-5">פולסוואגן ירושלים</td><td class="p-5 text-slate-600">התנופה 7 ירושלים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי+מ.מסחריות ירושלים</td><td class="p-5">036851</td><td class="p-5">אאודי+מ.מסחריות ירושלים</td><td class="p-5 text-slate-600">הסדנא 1 ירושלים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">סיאט חיפה</td><td class="p-5">042889</td><td class="p-5">סיאט חיפה</td><td class="p-5 text-slate-600">דרך יפו 157 חיפה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">042927</td><td class="p-5">שורק - היקפית 3</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">042929</td><td class="p-5">שורק - היקפית 4</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">042993</td><td class="p-5">שורק - סקודה</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">043024</td><td class="p-5">שורק - קבלה סקודה</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי פתח תקווה</td><td class="p-5">043367</td><td class="p-5">אאודי פתח תקווה</td><td class="p-5 text-slate-600">התנופה 5 פתח תקווה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">043414</td><td class="p-5">שורק - היקפית 1</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">פולסוואגן חיפה - אולמות</td><td class="p-5">045025</td><td class="p-5">פולסוואגן חיפה - אולמות</td><td class="p-5 text-slate-600">דרך יפו 157 חיפה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי חיפה</td><td class="p-5">049038</td><td class="p-5">אאודי חיפה</td><td class="p-5 text-slate-600">דרך יפו 157 חיפה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">משרדי אלייד</td><td class="p-5">052667</td><td class="p-5">אלייד - תשתיות</td><td class="p-5 text-slate-600">ששת הימים 30 בני ברק</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם סיאט ירושלים</td><td class="p-5">052834</td><td class="p-5">סיאט ירושלים</td><td class="p-5 text-slate-600">האומן 14 ירושלים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">סקודה באר שבע</td><td class="p-5">700012</td><td class="p-5">סקודה באר שבע</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">פולסוואגן באר שבע</td><td class="p-5">700014</td><td class="p-5">פולסוואגן באר שבע</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי באר שבע</td><td class="p-5">700015</td><td class="p-5">אאודי באר שבע מדור 2</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">סיאט באר שבע</td><td class="p-5">700016</td><td class="p-5">סיאט באר שבע מדור 3</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">חניון ומסירות באר שבע</td><td class="p-5">700416</td><td class="p-5">אולמות באר שבע - מטבחון והקפי</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">בית צ'מפיון</td><td class="p-5">757963</td><td class="p-5">צ'מפיון מוטורס - מטה</td><td class="p-5 text-slate-600">פלמחים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם תצוגה סקודה ירושלים</td><td class="p-5">758577</td><td class="p-5">אולם תצוגה סקודה ירושלים</td><td class="p-5 text-slate-600">האומן 14 ירושלים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם קופרה הרצליה</td><td class="p-5">758646</td><td class="p-5">קופרה הרצליה</td><td class="p-5 text-slate-600">שנקר 15 הרצליה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">בית צ'מפיון</td><td class="p-5">759610</td><td class="p-5">צ'מפיון מוטורס - מטה</td><td class="p-5 text-slate-600">פלמחים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם סקודה נתניה</td><td class="p-5">778593</td><td class="p-5">סקודה נתניה</td><td class="p-5 text-slate-600">הגביש 4 נתניה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">צ'מפיון מוטורס - מגרש מכוניות1</td><td class="p-5">779335</td><td class="p-5">צ'מפיון מוטורס - מגרש מכוניות1</td><td class="p-5 text-slate-600">העבודה 4 נס ציונה</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="mt-10 text-center text-slate-400 text-sm">
+            &copy; 2026 צ'מפיון מוטורס | מערכת מנויי מיגון פנימית
+        </footer>
+    </div>
+
+    <script>
+        function filterTable() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById("subTable");
+            const tr = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let rowText = tr[i].innerText.toLowerCase();
+                if (rowText.includes(filter)) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניהול מנויי מיגון - צ'מפיון מוטורס</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Assistant', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .table-container {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        tr:hover {
+            background-color: #e2e8f0;
+            transition: background-color 0.15s ease;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="mb-8 border-b-2 border-slate-200 pb-6 text-right">
+            <h1 class="text-4xl font-extrabold text-slate-800 mb-2">מערכת מנויי מיגון</h1>
+            <p class="text-slate-500 text-lg">סנכרון מלא בין אתרי שו"ב לפרטי מנויי מיגון</p>
+        </header>
+
+        <!-- Search -->
+        <div class="mb-6 flex justify-start">
+            <div class="relative w-full md:w-1/3">
+                <input type="text" id="searchInput" placeholder="חיפוש חופשי (מנוי, שם, כתובת)..." 
+                       class="w-full p-4 pr-12 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all shadow-sm"
+                       onkeyup="filterTable()">
+                <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-slate-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 table-container bg-white">
+            <table class="w-full text-right border-collapse" id="subTable">
+                <thead class="bg-slate-800 text-white">
+                    <tr>
+                        <th class="p-5 font-bold text-sm tracking-wide">שם האתר בשו"ב</th>
+                        <th class="p-5 font-bold text-sm tracking-wide">מס' מנוי מיגון</th>
+                        <th class="p-5 font-bold text-sm tracking-wide">שם מנוי מיגון</th>
+                        <th class="p-5 font-bold text-sm tracking-wide">כתובת</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200">
+                    <!-- Data Rows - Verified sync between Subscription Number and Subscription Name -->
+                    <tr><td class="p-5 font-bold text-blue-900">ראם משרדים</td><td class="p-5">005768</td><td class="p-5">ראם - משרדים</td><td class="p-5 text-slate-600">בני עי"ש</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">פולקסווגן בני ברק</td><td class="p-5">036374</td><td class="p-5">פולסוואגן בני ברק</td><td class="p-5 text-slate-600">ששת הימים 30 בני ברק</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי בני ברק</td><td class="p-5">036478</td><td class="p-5">אאודי בני ברק</td><td class="p-5 text-slate-600">ששת הימים 30 בני ברק</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם פולקסווגן ירושלים</td><td class="p-5">036737</td><td class="p-5">פולסוואגן ירושלים</td><td class="p-5 text-slate-600">התנופה 7 ירושלים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי+מ.מסחריות ירושלים</td><td class="p-5">036851</td><td class="p-5">אאודי+מ.מסחריות ירושלים</td><td class="p-5 text-slate-600">הסדנא 1 ירושלים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">סיאט חיפה</td><td class="p-5">042889</td><td class="p-5">סיאט חיפה</td><td class="p-5 text-slate-600">דרך יפו 157 חיפה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">042927</td><td class="p-5">שורק - היקפית 3</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">042929</td><td class="p-5">שורק - היקפית 4</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">042993</td><td class="p-5">שורק - סקודה</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">043024</td><td class="p-5">שורק - קבלה סקודה</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי פתח תקווה</td><td class="p-5">043367</td><td class="p-5">אאודי פתח תקווה</td><td class="p-5 text-slate-600">התנופה 5 פתח תקווה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">מעויין שורק</td><td class="p-5">043414</td><td class="p-5">שורק - היקפית 1</td><td class="p-5 text-slate-600">המדע 1 ראשון לציון</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">פולסוואגן חיפה - אולמות</td><td class="p-5">045025</td><td class="p-5">פולסוואגן חיפה - אולמות</td><td class="p-5 text-slate-600">דרך יפו 157 חיפה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי חיפה</td><td class="p-5">049038</td><td class="p-5">אאודי חיפה</td><td class="p-5 text-slate-600">דרך יפו 157 חיפה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">משרדי אלייד</td><td class="p-5">052667</td><td class="p-5">אלייד - תשתיות</td><td class="p-5 text-slate-600">ששת הימים 30 בני ברק</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם סיאט ירושלים</td><td class="p-5">052834</td><td class="p-5">סיאט ירושלים</td><td class="p-5 text-slate-600">האומן 14 ירושלים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">סקודה באר שבע</td><td class="p-5">700012</td><td class="p-5">סקודה באר שבע</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">פולסוואגן באר שבע</td><td class="p-5">700014</td><td class="p-5">פולסוואגן באר שבע</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אאודי באר שבע</td><td class="p-5">700015</td><td class="p-5">אאודי באר שבע מדור 2</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">סיאט באר שבע</td><td class="p-5">700016</td><td class="p-5">סיאט באר שבע מדור 3</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">חניון ומסירות באר שבע</td><td class="p-5">700416</td><td class="p-5">אולמות באר שבע - מטבחון והקפי</td><td class="p-5 text-slate-600">חיטה 1 באר שבע</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">בית צ'מפיון</td><td class="p-5">757963</td><td class="p-5">צ'מפיון מוטורס - מטה</td><td class="p-5 text-slate-600">פלמחים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם תצוגה סקודה ירושלים</td><td class="p-5">758577</td><td class="p-5">אולם תצוגה סקודה ירושלים</td><td class="p-5 text-slate-600">האומן 14 ירושלים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם קופרה הרצליה</td><td class="p-5">758646</td><td class="p-5">קופרה הרצליה</td><td class="p-5 text-slate-600">שנקר 15 הרצליה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">בית צ'מפיון</td><td class="p-5">759610</td><td class="p-5">צ'מפיון מוטורס - מטה</td><td class="p-5 text-slate-600">פלמחים</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">אולם סקודה נתניה</td><td class="p-5">778593</td><td class="p-5">סקודה נתניה</td><td class="p-5 text-slate-600">הגביש 4 נתניה</td></tr>
+                    <tr><td class="p-5 font-bold text-blue-900">צ'מפיון מוטורס - מגרש מכוניות1</td><td class="p-5">779335</td><td class="p-5">צ'מפיון מוטורס - מגרש מכוניות1</td><td class="p-5 text-slate-600">העבודה 4 נס ציונה</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="mt-10 text-center text-slate-400 text-sm">
+            &copy; 2026 צ'מפיון מוטורס | מערכת מנויי מיגון פנימית
+        </footer>
+    </div>
+
+    <script>
+        function filterTable() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById("subTable");
+            const tr = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let rowText = tr[i].innerText.toLowerCase();
+                if (rowText.includes(filter)) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
             }
         }
     </script>
